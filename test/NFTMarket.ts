@@ -69,7 +69,7 @@ describe("NFTMarket",()=>{
     it("should revert if not the owner",async()=>{
       const tokenId = await createNFT(tokenURI);
       const transaction = nftMarket.connect(signers[1]).listingNFT(tokenId,12);
-      await expect(transaction).to.be.revertedWith("ERC721: transfer caller is not owner nor approved");
+      await expect(transaction).to.be.revertedWith("ERC721: caller is not token owner nor approved");
     });
     
     it("should list the token if all requirement are meet",async()=>{
